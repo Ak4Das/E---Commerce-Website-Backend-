@@ -1,5 +1,5 @@
 import fs from "fs"
-const categoriesDataString = fs.readFileSync("./data/categories.json").toString()
+const categoriesDataString = fs.readFileSync("../data/categories.json").toString()
 export const categoriesData = JSON.parse(categoriesDataString)
 
 import CategoryModel from "../models/Category.model.js"
