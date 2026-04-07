@@ -1,5 +1,5 @@
 import fs from "fs"
-const clothsDataString = fs.readFileSync("../data/cloths.json", "utf-8")
+const clothsDataString = fs.readFileSync("./data/cloths.json", "utf-8")
 export const clothsData = JSON.parse(clothsDataString)
 
 import ClothModel from "../models/Cloth.model.js"
