@@ -1,6 +1,8 @@
 import fs from "fs"
-const categoriesDataString = fs.readFileSync("./data/categories.json").toString()
-export const categoriesData = JSON.parse(categoriesDataString)
+import path from "path";
+
+const filePath = path.join(process.cwd(), "data", "categories.json");
+export const categoriesData = JSON.parse(fs.readFileSync(filePath, "utf-8"));
 
 import CategoryModel from "../models/Category.model.js"
 

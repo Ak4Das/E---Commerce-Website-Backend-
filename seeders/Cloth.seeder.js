@@ -1,6 +1,8 @@
 import fs from "fs"
-const clothsDataString = fs.readFileSync("./data/cloths.json", "utf-8")
-export const clothsData = JSON.parse(clothsDataString)
+import path from "path";
+
+const filePath = path.join(process.cwd(), "data", "cloths.json");
+export const clothsData = JSON.parse(fs.readFileSync(filePath, "utf-8"));
 
 import ClothModel from "../models/Cloth.model.js"
 
