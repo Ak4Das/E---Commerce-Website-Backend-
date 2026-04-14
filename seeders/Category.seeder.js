@@ -8,10 +8,9 @@ import CategoryModel from "../models/Category.model.js"
 
 async function SeedCategories() {
   try {
-    for (const category of categoriesData) {
-      const newCategory = new CategoryModel(category)
-      await newCategory.save()
-    }
+    await CategoryModel.deleteMany({})
+    const result = await CategoryModel.insertMany(categoriesData)
+    return result
   } catch (error) {
     console.log("Failed to add data in Database", error)
   }

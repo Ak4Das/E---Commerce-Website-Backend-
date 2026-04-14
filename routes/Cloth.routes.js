@@ -1,4 +1,5 @@
 import {
+  putAllCloths,
   fetchAllCloths,
   fetchClothsById,
   fetchClothsByCategory,
@@ -18,6 +19,8 @@ import {
 import express from "express"
 const app = express()
 app.use(express.json())
+
+app.put("/seedCloths", putAllCloths)
 
 app.get("/", fetchAllCloths)
 

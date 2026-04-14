@@ -2,7 +2,7 @@
 import ConnectToDatabase from "./db/db.connect.js"
 ConnectToDatabase()
 
-// EXPRESS SETUP
+// CREATE SERVER
 import express from "express"
 const app = express()
 
@@ -16,41 +16,12 @@ const corsOptions = {
 app.use(cors(corsOptions))
 app.use(express.json())
 
-// UPDATE CLOTHS DATA IN DATABASE
-import ClothModel from "./models/Cloth.model.js"
-import SeedCloths, { clothsData } from "./seeders/Cloth.seeder.js"
-app.put("/seedCloths", async (req, res) => {
-  try {
-    const newData = clothsData
-    await ClothModel.deleteMany({})
-    const result = await ClothModel.insertMany(newData)
-    // await SeedCloths()
-    res.status(200)
-    res.json(result)
-  } catch (error) {
-    throw error
-  }
-})
-
-// UPDATE CATEGORIES DATA IN DATABASE
-import CategoryModel from "./models/Category.model.js"
-import SeedCategories, { categoriesData } from "./seeders/Category.seeder.js"
-app.put("/seedCategories", async (req, res) => {
-  try {
-    const newData = categoriesData
-    await CategoryModel.deleteMany({})
-    const result = await CategoryModel.insertMany(newData)
-    // await SeedCategories()
-    res.status(200)
-    res.json(result)
-  } catch (error) {
-    throw error
-  }
-})
-
 // ROUTES
 import ClothRoutes from "./routes/Cloth.routes.js"
 app.use("/cloth", ClothRoutes)
+
+import CategoryRoutes from "./routes/Category.routes.js"
+app.use("/category", CategoryRoutes)
 
 import CreateOrderRoutes from "./routes/CreateOrder.routes.js"
 app.use("/createOrder", CreateOrderRoutes)

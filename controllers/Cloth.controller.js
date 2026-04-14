@@ -12,8 +12,19 @@ import {
   saveNewCloth,
   updateClothsData,
   findByIdAndUpdate,
-  findByIdAndDelete
+  findByIdAndDelete,
 } from "../services/Cloth.service.js"
+import SeedCloths from "../seeders/Cloth.seeder.js"
+
+export const putAllCloths = async (req, res) => {
+  try {
+    const result = await SeedCloths()
+    res.status(200)
+    res.json(result)
+  } catch (error) {
+    throw error
+  }
+}
 
 export const fetchAllCloths = async (req, res) => {
   try {

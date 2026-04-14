@@ -8,10 +8,9 @@ import ClothModel from "../models/Cloth.model.js"
 
 async function SeedCloths() {
   try {
-    for (const cloth of clothsData) {
-      const newCloth = new ClothModel(cloth)
-      await newCloth.save()
-    }
+    await ClothModel.deleteMany({})
+    const result = await ClothModel.insertMany(clothsData)
+    return result
   } catch (error) {
     console.log("Failed to add data in Database", error)
   }
