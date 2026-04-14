@@ -15,9 +15,9 @@ app.get("/", fetchAllItems)
 
 app.post("/saveItem", postNewItem)
 
-app.post("/update/:id", fetchItemByIdAndUpdate)
+app.patch("/update/:id", fetchItemByIdAndUpdate)
 
-app.post("/updateItems", updateItems)
+app.put("/updateItems", updateItems)
 
 app.delete("/deleteMany", deleteMany)
 
