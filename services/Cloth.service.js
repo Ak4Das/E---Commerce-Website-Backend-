@@ -103,9 +103,8 @@ export const saveNewCloth = async (newCloth) => {
   }
 }
 
-export const updateClothsData = async (clothsData) => {
+export const postMultipleClothsData = async (clothsData) => {
   try {
-    await ClothModel.deleteMany({})
     const result = await ClothModel.insertMany(clothsData)
     return result
   } catch (error) {

@@ -10,7 +10,7 @@ import {
   getClothsByFreeDelivery,
   getClothsByNewArrival,
   saveNewCloth,
-  updateClothsData,
+  postMultipleClothsData,
   findByIdAndUpdate,
   findByIdAndDelete,
 } from "../services/Cloth.service.js"
@@ -145,9 +145,9 @@ export const postNewCloth = async (req, res) => {
   }
 }
 
-export const updateCloths = async (req, res) => {
+export const postMultipleCloths = async (req, res) => {
   try {
-    const savedCloths = await updateClothsData(req.body)
+    const savedCloths = await postMultipleClothsData(req.body)
     res.status(200)
     res.json(savedCloths)
   } catch (error) {

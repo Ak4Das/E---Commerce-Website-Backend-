@@ -11,7 +11,7 @@ import {
   fetchClothsByFreeDelivery,
   fetchClothsByNewArrival,
   postNewCloth,
-  updateCloths,
+  postMultipleCloths,
   fetchByIdAndUpdate,
   fetchByIdAndDelete,
 } from "../controllers/Cloth.controller.js"
@@ -19,8 +19,6 @@ import {
 import express from "express"
 const app = express()
 app.use(express.json())
-
-app.put("/seedCloths", putAllCloths)
 
 app.get("/", fetchAllCloths)
 
@@ -42,11 +40,13 @@ app.get("/freeDelivery/:freeDelivery", fetchClothsByFreeDelivery)
 
 app.get("/newArrival/:newArrival", fetchClothsByNewArrival)
 
+app.put("/seedCloths", putAllCloths)
+
 app.post("/saveCloth", postNewCloth)
 
-app.post("/updateCloths", updateCloths)
+app.post("/saveMultipleCloths", postMultipleCloths)
 
-app.post("/update/:id", fetchByIdAndUpdate)
+app.patch("/update/:id", fetchByIdAndUpdate)
 
 app.delete("/delete/:id", fetchByIdAndDelete)
 
