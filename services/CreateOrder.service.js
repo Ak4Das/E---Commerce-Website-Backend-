@@ -37,21 +37,21 @@ export const findItemByIdAndUpdate = async (id, dataToUpdate) => {
 export const updateItemsInCreateOrder = async (itemsData) => {
   try {
     await CreateOrderModel.deleteMany({})
-    // const cleanedData = itemsData.map((item) => {
-    //   const { _id, ...rest } = item
-    //   return rest
-    // })
-    // const uniqueData = cleanedData.reduce((acc, item) => {
-    //   if (!acc.length) {
-    //     acc.push(item)
-    //   } else {
-    //     const searchInAcc = acc.find((obj) => obj.id === item.id) ? true : false
-    //     if (!searchInAcc) {
-    //       acc.push(item)
-    //     }
-    //   }
-    //   return acc
-    // }, [])
+    const cleanedData = itemsData.map((item) => {
+      const { _id, ...rest } = item
+      return rest
+    })
+    const uniqueData = cleanedData.reduce((acc, item) => {
+      if (!acc.length) {
+        acc.push(item)
+      } else {
+        const searchInAcc = acc.find((obj) => obj.id === item.id) ? true : false
+        if (!searchInAcc) {
+          acc.push(item)
+        }
+      }
+      return acc
+    }, [])
     const result = await CreateOrderModel.insertMany(itemsData)
     return result
   } catch (error) {
