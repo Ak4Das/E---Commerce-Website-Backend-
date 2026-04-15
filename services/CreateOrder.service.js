@@ -52,7 +52,7 @@ export const updateItemsInCreateOrder = async (itemsData) => {
       }
       return acc
     }, [])
-    const result = await CreateOrderModel.insertMany(itemsData)
+    const result = await CreateOrderModel.insertMany(uniqueData)
     return result
   } catch (error) {
     throw error
